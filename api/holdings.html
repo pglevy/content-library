@@ -1,0 +1,16 @@
+---
+permalink: /api/holdings.json
+---
+
+[
+  {% for row in site.data.holdings  %}
+    {
+      {% for item in site.data.holdings[0] %}
+      {% assign heading = item[0] %}        
+        "{{ heading }}": "{{ row[heading] }}"
+        {% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    }
+    {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]
